@@ -1,0 +1,41 @@
+<div class="row" id="list-bookings" *ngIf="loadBookings">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center">{{'label.list.bookings' | translate }}</h1>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="listBookings.length > 0">
+            <div class="col-12" *ngFor="let booking of listBookings">
+                <div class="row booking">
+                    <div class="col-sm-3 col-12">
+                        <span class="d-block text-secondary">{{ 'label.date' | translate }}</span>
+                        <span class="d-block">{{ booking.date | date: 'dd/mm/yyyy HH:mm' }}</span>
+                    </div>
+                    <div class="col-sm-3 col-12">
+                        <span class="d-block text-secondary">{{ 'label.service' | translate }}</span>
+                        <span class="d-block">{{ booking.service | translate }}</span>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <span class="d-block text-secondary">{{ 'label.name' | translate }}</span>
+                        <span class="d-block">{{ booking.name }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="listBookings.length === 0">
+            <div class="col-12 text-center">
+                <span>{{'label.no.data' | translate }}</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="h-100" *ngIf="!loadBookings">
+    <div class="spinner">
+        <img src="../../../assets/img/spinner.gif">
+    </div>
+</div>
